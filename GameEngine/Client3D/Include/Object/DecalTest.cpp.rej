@@ -1,0 +1,9 @@
+diff a/GameEngine/Client3D/Include/Object/DecalTest.cpp b/GameEngine/Client3D/Include/Object/DecalTest.cpp	(rejected hunks)
+@@ -41,7 +41,6 @@
+     Material->SetTexture("DefaultDecal", "BloodDecal", TEXT("Decal/Decal.png"));
+     Material->SetTexture("DefaultDecalNormal", "BloodDecalNormal", TEXT("Decal/Decal_NRM.png"));
+     Material->SetTexture("DefaultDecalSpecular", "BloodDecalSpecular", TEXT("Decal/Decal_SPEC.png"));
+-    m_Decal->SetDuration(3.f);
+     Material->SetTexture("DefaultDecal", "BloodDecal", TEXT("Decal/Arrow.png"));
+     Material->SetTexture("DefaultDecalNormal", "BloodDecalNormal", TEXT("Decal/Arrow.png"));
+     Material->SetTexture("DefaultDecalSpecular", "BloodDecalSpecular", TEXT("Decal/Arrow.png"));

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{d3466c3b-fb16-450f-b1d1-f12df65e35d3}</ProjectGuid>
+    <RootNamespace>Client3D</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../Bin/</OutDir>
+    <IntDir>../BinObj/</IntDir>
+    <TargetName>$(ProjectName)_Debug</TargetName>
+    <IncludePath>../../Engine/Include/;$(IncludePath)</IncludePath>
+    <LibraryPath>../Bin/;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../Bin/</OutDir>
+    <IntDir>../BinObj/</IntDir>
+    <IncludePath>../../Engine/Include/;$(IncludePath)</IncludePath>
+    <LibraryPath>../Bin/;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../Bin/</OutDir>
+    <IntDir>../BinObj/</IntDir>
+    <TargetName>$(ProjectName)_Debug</TargetName>
+    <IncludePath>../../Engine/Include/;$(IncludePath)</IncludePath>
+    <LibraryPath>../Bin/;$(LibraryPath)</LibraryPath>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../Bin/</OutDir>
+    <IntDir>../BinObj/</IntDir>
+    <IncludePath>../../Engine/Include/;$(IncludePath)</IncludePath>
+    <LibraryPath>../Bin/;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>"$(VC_ExecutablePath_x86)\lib.exe" /out:"$(SolutionDir)Client3D/Bin/$(ProjectName)_Debug.lib"  "$(SolutionDir)Client3D/BinObj/*.obj"
+"$(VC_ExecutablePath_x86)\lib.exe" /remove:"$(SolutionDir)Client3D\BinObj\main.obj"  "$(SolutionDir)Client3D/Bin/$(ProjectName)_Debug.lib"
+call "$(SolutionDir)CopyClient.bat"
+</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation\WendyAnimation.cpp" />
+    <ClCompile Include="Animation\AxeSoldierAnimation.cpp" />
+    <ClCompile Include="Animation\PlayerAnimation.cpp" />
+    <ClCompile Include="Animation\SniperAnimation.cpp" />
+    <ClCompile Include="ClientManager.cpp" />
+    <ClCompile Include="DataTable\ItemDataTable.cpp" />
+    <ClCompile Include="DataTable\PlayerDataTable.cpp" />
+    <ClCompile Include="LobbyManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object\AttackObject.cpp" />
+    <ClCompile Include="Object\Axe_Weapon.cpp" />
+    <ClCompile Include="Object\BossSpawnObject.cpp" />
+    <ClCompile Include="Object\ExplosionEffect.cpp" />
+    <ClCompile Include="Object\KnifeEffect.cpp" />
+    <ClCompile Include="Object\PoseCopy.cpp" />
+    <ClCompile Include="Object\Wendy_Brandish.cpp" />
+    <ClCompile Include="Object\CameraMoveObject.cpp" />
+    <ClCompile Include="Object\ColliderSpawnObject.cpp" />
+    <ClCompile Include="Object\DecalMonsterDir.cpp" />
+    <ClCompile Include="Object\Effect.cpp" />
+    <ClCompile Include="Object\HitEffect.cpp" />
+    <ClCompile Include="Object\KianaFire.cpp" />
+    <ClCompile Include="Object\MonsterSpawnEffect.cpp" />
+    <ClCompile Include="Object\LobbyValkyrieSelectZone.cpp" />
+    <ClCompile Include="Object\PlayerAttCol.cpp" />
+    <ClCompile Include="Object\SniperBillet.cpp" />
+    <ClCompile Include="Object\SniperGrenade.cpp" />
+    <ClCompile Include="Object\MonsterSpawnObject.cpp" />
+    <ClCompile Include="Object\LoadingStartObject.cpp" />
+    <ClCompile Include="Object\LobbyShip.cpp" />
+    <ClCompile Include="Object\MapItem.cpp" />
+    <ClCompile Include="Object\MapItemCoin.cpp" />
+    <ClCompile Include="Object\MapItemHeal.cpp" />
+    <ClCompile Include="Object\MapItemSPHeal.cpp" />
+    <ClCompile Include="Object\TornadoEffect.cpp" />
+    <ClCompile Include="Object\TornadoTrailObject.cpp" />
+    <ClCompile Include="Object\Wendy.cpp" />
+    <ClCompile Include="Object\AxeSoldier.cpp" />
+    <ClCompile Include="Object\ClientObject.cpp" />
+    <ClCompile Include="Object\DecalWind.cpp" />
+    <ClCompile Include="Object\FSM_Wendy.cpp" />
+    <ClCompile Include="Object\FSM_AxeSoldier.cpp" />
+    <ClCompile Include="Object\FSM_Sniper.cpp" />
+    <ClCompile Include="Object\KianaPlayer.cpp" />
+    <ClCompile Include="Object\MainLandScape.cpp" />
+    <ClCompile Include="Object\MapCollision.cpp" />
+    <ClCompile Include="Object\Monster.cpp" />
+    <ClCompile Include="Object\Player.cpp" />
+    <ClCompile Include="Object\PlayerMainCamera.cpp" />
+    <ClCompile Include="Object\PlayerTemp.cpp" />
+    <ClCompile Include="Object\SakuraPlayer.cpp" />
+    <ClCompile Include="Object\TestParticle.cpp" />
+    <ClCompile Include="Object\Sniper.cpp" />
+    <ClCompile Include="Object\Wendy_AirHitEffect.cpp" />
+    <ClCompile Include="Object\Wendy_AirBallEffect.cpp" />
+    <ClCompile Include="Object\Wendy_AirBullet.cpp" />
+    <ClCompile Include="Object\Wendy_AirHole.cpp" />
+    <ClCompile Include="Object\Wendy_AirHoleEffect.cpp" />
+    <ClCompile Include="Object\Wendy_AirStar.cpp" />
+    <ClCompile Include="Object\Wendy_Shoot.cpp" />
+    <ClCompile Include="Object\Wendy_Storm.cpp" />
+    <ClCompile Include="PublicData.cpp" />
+    <ClCompile Include="Scene\EffectTestScene.cpp" />
+    <ClCompile Include="Scene\LoadingScene.cpp" />
+    <ClCompile Include="Scene\LoadingThread.cpp" />
+    <ClCompile Include="Scene\LobbyScene.cpp" />
+    <ClCompile Include="Scene\MainScene.cpp" />
+    <ClCompile Include="Scene\StageScene.cpp" />
+    <ClCompile Include="Scene\StageScene1.cpp" />
+    <ClCompile Include="Scene\StageScene2.cpp" />
+    <ClCompile Include="StageManager.cpp" />
+    <ClCompile Include="UI\FadeInOutUI.cpp" />
+    <ClCompile Include="UI\FadeInOut_White.cpp" />
+    <ClCompile Include="UI\GameClearUI.cpp" />
+    <ClCompile Include="UI\LoadingUI.cpp" />
+    <ClCompile Include="UI\LoadingUI_Resource.cpp" />
+    <ClCompile Include="UI\LobbyEquipmemtUI.cpp" />
+    <ClCompile Include="UI\LobbyItemInfoDialog.cpp" />
+    <ClCompile Include="UI\LobbyLevelUpDialog.cpp" />
+    <ClCompile Include="UI\LobbyMainUI.cpp" />
+    <ClCompile Include="UI\LobbyStageSelectUI.cpp" />
+    <ClCompile Include="UI\LobbySupplyResultUI.cpp" />
+    <ClCompile Include="UI\LobbySupplyUI.cpp" />
+    <ClCompile Include="UI\LobbyValkyrieInfoUI.cpp" />
+    <ClCompile Include="UI\LobbyValkyrieSelectUI.cpp" />
+    <ClCompile Include="UI\LobbyWeaponInfoUI.cpp" />
+    <ClCompile Include="UI\LobbyWeaponLevelUpDialog.cpp" />
+    <ClCompile Include="UI\PlayerHitComboUI.cpp" />
+    <ClCompile Include="UI\PlayerUI.cpp" />
+    <ClCompile Include="UI\Stage1StoryUI.cpp" />
+    <ClCompile Include="UI\TargetImageWidget.cpp" />
+    <ClCompile Include="UI\UIDamageText.cpp" />
+    <ClCompile Include="UI\UIManager.cpp" />
+    <ClCompile Include="UI\ValkyrieImageButton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation\WendyAnimation.h" />
+    <ClInclude Include="Animation\AxeSoldierAnimation.h" />
+    <ClInclude Include="Animation\PlayerAnimation.h" />
+    <ClInclude Include="Animation\SniperAnimation.h" />
+    <ClInclude Include="ClientManager.h" />
+    <ClInclude Include="DataTable\ItemDataTable.h" />
+    <ClInclude Include="DataTable\PlayerDataTable.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="LobbyManager.h" />
+    <ClInclude Include="Object\AttackObject.h" />
+    <ClInclude Include="Object\Axe_Weapon.h" />
+    <ClInclude Include="Object\BossSpawnObject.h" />
+    <ClInclude Include="Object\ExplosionEffect.h" />
+    <ClInclude Include="Object\KnifeEffect.h" />
+    <ClInclude Include="Object\PoseCopy.h" />
+    <ClInclude Include="Object\Wendy_Brandish.h" />
+    <ClInclude Include="Object\CameraMoveObject.h" />
+    <ClInclude Include="Object\ColliderSpawnObject.h" />
+    <ClInclude Include="Object\DecalMonsterDir.h" />
+    <ClInclude Include="Object\Effect.h" />
+    <ClInclude Include="Object\HitEffect.h" />
+    <ClInclude Include="Object\KianaFire.h" />
+    <ClInclude Include="Object\MonsterSpawnEffect.h" />
+    <ClInclude Include="Object\LobbyValkyrieSelectZone.h" />
+    <ClInclude Include="Object\PlayerAttCol.h" />
+    <ClInclude Include="Object\SniperBillet.h" />
+    <ClInclude Include="Object\SniperGrenade.h" />
+    <ClInclude Include="Object\MonsterSpawnObject.h" />
+    <ClInclude Include="Object\LoadingStartObject.h" />
+    <ClInclude Include="Object\LobbyShip.h" />
+    <ClInclude Include="Object\MapItem.h" />
+    <ClInclude Include="Object\MapItemCoin.h" />
+    <ClInclude Include="Object\MapItemHeal.h" />
+    <ClInclude Include="Object\MapItemSPHeal.h" />
+    <ClInclude Include="Object\TornadoEffect.h" />
+    <ClInclude Include="Object\TornadoTrailObject.h" />
+    <ClInclude Include="Object\Wendy.h" />
+    <ClInclude Include="Object\AxeSoldier.h" />
+    <ClInclude Include="Object\ClientObject.h" />
+    <ClInclude Include="Object\DecalWind.h" />
+    <ClInclude Include="Object\KianaPlayer.h" />
+    <ClInclude Include="Object\MainLandScape.h" />
+    <ClInclude Include="Object\MapCollision.h" />
+    <ClInclude Include="Object\Monster.h" />
+    <ClInclude Include="Object\Player.h" />
+    <ClInclude Include="Object\PlayerMainCamera.h" />
+    <ClInclude Include="Object\PlayerTemp.h" />
+    <ClInclude Include="Object\SakuraPlayer.h" />
+    <ClInclude Include="Object\TestParticle.h" />
+    <ClInclude Include="Object\Sniper.h" />
+    <ClInclude Include="Object\Wendy_AirHitEffect.h" />
+    <ClInclude Include="Object\Wendy_AirBallEffect.h" />
+    <ClInclude Include="Object\Wendy_AirBullet.h" />
+    <ClInclude Include="Object\Wendy_AirHole.h" />
+    <ClInclude Include="Object\Wendy_AirHoleEffect.h" />
+    <ClInclude Include="Object\Wendy_AirStar.h" />
+    <ClInclude Include="Object\Wendy_Shoot.h" />
+    <ClInclude Include="Object\Wendy_Storm.h" />
+    <ClInclude Include="PublicData.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene\EffectTestScene.h" />
+    <ClInclude Include="Scene\LoadingScene.h" />
+    <ClInclude Include="Scene\LoadingThread.h" />
+    <ClInclude Include="Scene\LobbyScene.h" />
+    <ClInclude Include="Scene\MainScene.h" />
+    <ClInclude Include="Scene\StageScene.h" />
+    <ClInclude Include="Scene\StageScene1.h" />
+    <ClInclude Include="Scene\StageScene2.h" />
+    <ClInclude Include="StageManager.h" />
+    <ClInclude Include="UI\FadeInOutUI.h" />
+    <ClInclude Include="UI\FadeInOut_White.h" />
+    <ClInclude Include="UI\GameClearUI.h" />
+    <ClInclude Include="UI\LoadingUI.h" />
+    <ClInclude Include="UI\LoadingUI_Resource.h" />
+    <ClInclude Include="UI\LobbyEquipmemtUI.h" />
+    <ClInclude Include="UI\LobbyItemInfoDialog.h" />
+    <ClInclude Include="UI\LobbyLevelUpDialog.h" />
+    <ClInclude Include="UI\LobbyMainUI.h" />
+    <ClInclude Include="UI\LobbyStageSelectUI.h" />
+    <ClInclude Include="UI\LobbySupplyResultUI.h" />
+    <ClInclude Include="UI\LobbySupplyUI.h" />
+    <ClInclude Include="UI\LobbyValkyrieInfoUI.h" />
+    <ClInclude Include="UI\LobbyValkyrieSelectUI.h" />
+    <ClInclude Include="UI\LobbyWeaponInfoUI.h" />
+    <ClInclude Include="UI\LobbyWeaponLevelUpDialog.h" />
+    <ClInclude Include="UI\PlayerHitComboUI.h" />
+    <ClInclude Include="UI\PlayerUI.h" />
+    <ClInclude Include="UI\Stage1StoryUI.h" />
+    <ClInclude Include="UI\TargetImageWidget.h" />
+    <ClInclude Include="UI\UIDamageText.h" />
+    <ClInclude Include="UI\UIManager.h" />
+    <ClInclude Include="UI\ValkyrieImageButton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client3D.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

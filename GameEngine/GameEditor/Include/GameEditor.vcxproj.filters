@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. EditorGUI">
+      <UniqueIdentifier>{464f951e-8cbc-4b1a-8585-afa017f40f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{14fa2b47-0b3f-4ed3-940e-26be10c9a103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent">
+      <UniqueIdentifier>{a19d56c5-0d51-4d34-94ba-ba5ec321d61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\Particle">
+      <UniqueIdentifier>{3d973619-316a-4659-aa20-6c1b0fbee370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\Tool">
+      <UniqueIdentifier>{f89b5764-6ce1-4633-adb7-45a054333b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorTool">
+      <UniqueIdentifier>{9fdce689-65f4-4520-886f-1bf5f5ecd6d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorWindow">
+      <UniqueIdentifier>{ca25cd46-6fc4-4818-893c-92565e21dc4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent">
+      <UniqueIdentifier>{ad3e22a0-950c-458d-8133-cfd28fc56048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Primitive">
+      <UniqueIdentifier>{19accf73-afb9-4baa-a746-f7225cdaf818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Camera">
+      <UniqueIdentifier>{3b8288be-0091-4250-ab3f-4c954f760ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Arm">
+      <UniqueIdentifier>{012a0fc5-b633-4e18-9a51-9dd1b7031333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Light">
+      <UniqueIdentifier>{959ad5cd-95fd-4a85-b452-7557fbe2ba84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Primitive\Mesh">
+      <UniqueIdentifier>{1bc98bae-de66-439b-bd2a-3c446c1d0cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{0153f353-bfb9-4f07-9603-d5b75dbb58fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Collider">
+      <UniqueIdentifier>{15d5d178-ee78-46c8-aa8d-3e13b8465c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorWindow\Temp_Test">
+      <UniqueIdentifier>{f6426c38-dcd5-4f93-bbe6-4c0e77287c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Primitive\Billboard">
+      <UniqueIdentifier>{9b55d79d-a2e5-45b5-8956-0056a5cc362e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\SceneComponent\Primitive\Sky">
+      <UniqueIdentifier>{f4bed907-7998-44aa-b749-5dee93b0d238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\Custom">
+      <UniqueIdentifier>{8e049b06-b11f-48e5-ab27-dd88722818a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorComponent\Custom\SpawnObject">
+      <UniqueIdentifier>{8c6ff9b1-d949-4b6a-bd86-37d69cddd646}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEditor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEditorDoc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEditorView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EditorScene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorTool\IMGUIGizmo.h">
+      <Filter>EditorTool</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\ObjectWindow.h">
+      <Filter>EditorWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\PrefabWindow.h">
+      <Filter>EditorWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\ToolWindow.h">
+      <Filter>EditorWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\ComponentWindow.h">
+      <Filter>EditorWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\InspectorWindow.h">
+      <Filter>EditorWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIWidgetComponent.h">
+      <Filter>EditorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIParticleComponent.h">
+      <Filter>EditorComponent\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIGizmoComponent.h">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIObjectInfoComponent.h">
+      <Filter>EditorComponent\SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUITransformComponent.h">
+      <Filter>EditorComponent\SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUICameraComponent.h">
+      <Filter>EditorComponent\SceneComponent\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIStaticMeshComponent.h">
+      <Filter>EditorComponent\SceneComponent\Primitive\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIAnimationMeshComponent.h">
+      <Filter>EditorComponent\SceneComponent\Primitive\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalValue.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIColliderSphereComponent.h">
+      <Filter>EditorComponent\SceneComponent\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIColliderBox3DComponent.h">
+      <Filter>EditorComponent\SceneComponent\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\SaveLoadWindow.h">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIBillboardComponent.h">
+      <Filter>EditorComponent\SceneComponent\Primitive\Billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\TestWindow.h">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\LogWindow.h">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow\DetailWindow.h">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUICurCameraComponent.h">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUILightComponent.h">
+      <Filter>EditorComponent\SceneComponent\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUISkyComponent.h">
+      <Filter>EditorComponent\SceneComponent\Primitive\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUICameraMoveComponent.h">
+      <Filter>EditorComponent\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIBossSpawnObjectComponent.h">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIColliderSpawnObjectComponent.h">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIMonsterSpawnObjectComponent.h">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorComponent\IMGUIRenderOptionComponent.h">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEditor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEditorDoc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEditorView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\EditorScene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorTool\IMGUIGizmo.cpp">
+      <Filter>EditorTool</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\ObjectWindow.cpp">
+      <Filter>EditorWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\PrefabWindow.cpp">
+      <Filter>EditorWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\ToolWindow.cpp">
+      <Filter>EditorWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\ComponentWindow.cpp">
+      <Filter>EditorWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\InspectorWindow.cpp">
+      <Filter>EditorWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIWidgetComponent.cpp">
+      <Filter>EditorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIParticleComponent.cpp">
+      <Filter>EditorComponent\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIGizmoComponent.cpp">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIObjectInfoComponent.cpp">
+      <Filter>EditorComponent\SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUITransformComponent.cpp">
+      <Filter>EditorComponent\SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUICameraComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIStaticMeshComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Primitive\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIAnimationMeshComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Primitive\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalValue.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIColliderSphereComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIColliderBox3DComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\SaveLoadWindow.cpp">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIBillboardComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Primitive\Billboard</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\TestWindow.cpp">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\LogWindow.cpp">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow\DetailWindow.cpp">
+      <Filter>EditorWindow\Temp_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUICurCameraComponent.cpp">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUILightComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUISkyComponent.cpp">
+      <Filter>EditorComponent\SceneComponent\Primitive\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUICameraMoveComponent.cpp">
+      <Filter>EditorComponent\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIBossSpawnObjectComponent.cpp">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIColliderSpawnObjectComponent.cpp">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIMonsterSpawnObjectComponent.cpp">
+      <Filter>EditorComponent\Custom\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorComponent\IMGUIRenderOptionComponent.cpp">
+      <Filter>EditorComponent\Tool</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameEditor.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\GameEditor.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\GameEditorDoc.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\GameEditor.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,784 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. SceneMode">
+      <UniqueIdentifier>{ce8ed896-ba7d-4ac7-a994-7331ca891d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object">
+      <UniqueIdentifier>{cc7220aa-801b-4166-a951-456307753afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Animation">
+      <UniqueIdentifier>{53d5d54a-8343-4413-896c-d4d8ed3eaea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Player">
+      <UniqueIdentifier>{c5a66871-12b0-4928-b1cf-108eb6c177c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Player\Kiana">
+      <UniqueIdentifier>{c58d6480-8506-4955-8267-de5547852fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Player\Sakura">
+      <UniqueIdentifier>{f0940806-1d9b-4e07-bba9-8bbe6de94be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{389eb307-40e5-45bd-9bc7-3e0fe1fb00f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\01. PlayerUI">
+      <UniqueIdentifier>{f5313783-1c28-474a-8fbe-60427448f11b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster">
+      <UniqueIdentifier>{92a80a23-fbc4-4f40-b067-c4e48cbb566e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Axe">
+      <UniqueIdentifier>{cdce8136-a30e-41fe-a1c1-ecab27b99b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Axe\Animation">
+      <UniqueIdentifier>{d670a0d5-a6ed-49fb-92b1-fd40416ef251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Sniper">
+      <UniqueIdentifier>{4e7abc2c-fb73-4265-84c2-cee9cfba72a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Sniper\Animation">
+      <UniqueIdentifier>{837965fd-6a7f-4fde-a37d-c420adf9c826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Wendy">
+      <UniqueIdentifier>{a7e519fd-6e7d-4a8e-96b2-4e1729fc372b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\Wendy\Animation">
+      <UniqueIdentifier>{0c230b0c-5a3e-4266-b1f7-0481fe813ad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Decal">
+      <UniqueIdentifier>{7e2aaa7a-0321-439e-9e57-7d79c921ba9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\MainLandScape">
+      <UniqueIdentifier>{ed8891a9-236f-4a0f-9c7d-70ad4bcc61f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. PublicData">
+      <UniqueIdentifier>{37cfa823-81dc-4247-8056-44b7387ba477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. PublicData\DataTable">
+      <UniqueIdentifier>{ed55351f-3be7-40bd-b1a1-b21bac0962a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\LoadingObject">
+      <UniqueIdentifier>{5f2cce31-2f02-4219-8b50-2a0a3e4594b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby">
+      <UniqueIdentifier>{17d64fe1-7c8c-434e-9adf-9a6664a7e0ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\LobbyMainUI">
+      <UniqueIdentifier>{6253530e-78ad-4bd2-bd16-1766c60024ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\LobbyValkyrie">
+      <UniqueIdentifier>{f140b32f-f362-4cc5-894c-d561d118c926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\LobbyScene">
+      <UniqueIdentifier>{aa3adc99-6913-4574-8bcf-5eb0157cbc1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\MapItem">
+      <UniqueIdentifier>{16cf2cc9-e225-4639-8065-6ce70f3d0de1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\StageScene">
+      <UniqueIdentifier>{4760ab9a-230b-4389-a1fd-3fb87bba5c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\StageScene\Stage1">
+      <UniqueIdentifier>{4f27e6c4-721b-4feb-b3b8-9e5196c60531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\StageScene\Stage2">
+      <UniqueIdentifier>{137e3208-6cbd-4f95-8f87-2b2828ce52b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\StageScene\Stage3">
+      <UniqueIdentifier>{1c8ae525-ccc3-49f8-b684-ebacde336178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. PublicData\StageManager">
+      <UniqueIdentifier>{9e5fc8a4-3a53-400a-b8af-4d9db266ec21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject">
+      <UniqueIdentifier>{c6e6f3b6-86fd-476d-b655-e350655285ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject\Monster">
+      <UniqueIdentifier>{1732a7ae-152c-4ce3-8963-2014ad71316f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject\Monster\SniperBillet">
+      <UniqueIdentifier>{1894c5ef-4cb0-447f-aaa8-a445f5fe113e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject\Player">
+      <UniqueIdentifier>{b35d3602-ace2-469c-a17a-d6ce038c6a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Camera">
+      <UniqueIdentifier>{d436b2c0-a7a5-416a-98ed-6e30cb822129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\MapCollider">
+      <UniqueIdentifier>{e97a85fa-75bd-45ef-8a7d-a642529672a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\FadeInOut">
+      <UniqueIdentifier>{0dc18268-5166-4d0f-9a3c-57c19075564c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\LobbyObjects">
+      <UniqueIdentifier>{f44b4317-e306-45f5-971e-deebe8cb13f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\LobbyObjects\LobbyShip">
+      <UniqueIdentifier>{5b80d168-57b0-4d5b-b44c-8353568f8311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\LoadingUI">
+      <UniqueIdentifier>{19351d9a-af20-4912-9cd2-70c16f8399d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\StoryUI">
+      <UniqueIdentifier>{de242fd3-8f0a-46d8-9539-10c0d0fbd693}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameClear">
+      <UniqueIdentifier>{22b19874-be04-44f2-b440-0752d783e960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\LobbyStageSelect">
+      <UniqueIdentifier>{35c78e04-c9db-4663-b40d-f74bb69b3b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject\Monster\WendyBullet">
+      <UniqueIdentifier>{ed3760e5-6000-42a7-b1bf-e8970f7b9c23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\SpawnObject">
+      <UniqueIdentifier>{9a14754b-e714-4623-8f38-524ec7df9622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\AttackObject\Monster\Axe">
+      <UniqueIdentifier>{28e1c26b-e06b-4a7c-a753-27c7808c98a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Monster\MonsterEffect">
+      <UniqueIdentifier>{a0f846c2-fe6d-44ca-98d8-2da24c0eadc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\Effect">
+      <UniqueIdentifier>{484f3962-6aa1-4019-8d5b-facf89d7ebd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{0d465e52-7289-42d8-b9a4-510a62284b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\CustomWidget">
+      <UniqueIdentifier>{be06000d-c079-41fe-899d-f44e1cba6bbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\Dialog">
+      <UniqueIdentifier>{adc495e6-d7f6-4fa3-a9e1-fde49835179c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\WeaponInfo">
+      <UniqueIdentifier>{80384c85-55ba-4668-b7cd-95d600ca2b08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\Supply">
+      <UniqueIdentifier>{e180bf6a-3649-496d-b399-dccd00025052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Lobby\EquipmentUI">
+      <UniqueIdentifier>{e73b1cf7-fd88-471a-b4da-37c16c6fb7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\PoseCopy">
+      <UniqueIdentifier>{9f3e3819-a8fd-4ddf-abb9-fe81b0ddf023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\LoadingScene">
+      <UniqueIdentifier>{f29309ce-3d61-4b68-98f5-38663a9d64b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. SceneMode\LoadingScene\LoadingThread">
+      <UniqueIdentifier>{0748569f-03a4-4b7d-aa23-14056c1edeec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\MainScene.cpp">
+      <Filter>01. SceneMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation\PlayerAnimation.cpp">
+      <Filter>03. Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\KianaPlayer.cpp">
+      <Filter>02. Object\Player\Kiana</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Player.cpp">
+      <Filter>02. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\SakuraPlayer.cpp">
+      <Filter>02. Object\Player\Sakura</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\PlayerUI.cpp">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UIManager.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\PlayerTemp.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\AxeSoldier.cpp">
+      <Filter>02. Object\Monster\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\FSM_AxeSoldier.cpp">
+      <Filter>02. Object\Monster\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation\AxeSoldierAnimation.cpp">
+      <Filter>02. Object\Monster\Axe\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicData.cpp">
+      <Filter>00. PublicData</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Sniper.cpp">
+      <Filter>02. Object\Monster\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation\SniperAnimation.cpp">
+      <Filter>02. Object\Monster\Sniper\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\FSM_Sniper.cpp">
+      <Filter>02. Object\Monster\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestParticle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy.cpp">
+      <Filter>02. Object\Monster\Wendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\FSM_Wendy.cpp">
+      <Filter>02. Object\Monster\Wendy</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation\WendyAnimation.cpp">
+      <Filter>02. Object\Monster\Wendy\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapCollision.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestParticle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StageManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\PlayerMainCamera.cpp">
+      <Filter>02. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MainLandScape.cpp">
+      <Filter>02. Object\MainLandScape</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster.cpp">
+      <Filter>02. Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\ClientObject.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTable\ItemDataTable.cpp">
+      <Filter>00. PublicData\DataTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\LoadingStartObject.cpp">
+      <Filter>02. Object\LoadingObject</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyMainUI.cpp">
+      <Filter>UI\Lobby\LobbyMainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyValkyrieSelectUI.cpp">
+      <Filter>UI\Lobby\LobbyValkyrie</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\LobbyScene.cpp">
+      <Filter>01. SceneMode\LobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTable\PlayerDataTable.cpp">
+      <Filter>00. PublicData\DataTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapItem.cpp">
+      <Filter>02. Object\MapItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapItemCoin.cpp">
+      <Filter>02. Object\MapItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapItemHeal.cpp">
+      <Filter>02. Object\MapItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapItemSPHeal.cpp">
+      <Filter>02. Object\MapItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\StageScene1.cpp">
+      <Filter>01. SceneMode\StageScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\StageScene.cpp">
+      <Filter>01. SceneMode\StageScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\StageScene2.cpp">
+      <Filter>01. SceneMode\StageScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="StageManager.cpp">
+      <Filter>00. PublicData\StageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\AttackObject.cpp">
+      <Filter>02. Object\AttackObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\SniperBillet.cpp">
+      <Filter>02. Object\AttackObject\Monster\SniperBillet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\SniperGrenade.cpp">
+      <Filter>02. Object\AttackObject\Monster\SniperBillet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\PlayerAttCol.cpp">
+      <Filter>02. Object\AttackObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\PlayerMainCamera.cpp">
+      <Filter>02. Object\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\DecalMonsterDir.cpp">
+      <Filter>02. Object\Decal</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\CameraMoveObject.cpp">
+      <Filter>02. Object\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\FadeInOutUI.cpp">
+      <Filter>UI\FadeInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\FadeInOut_White.cpp">
+      <Filter>UI\FadeInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\LobbyShip.cpp">
+      <Filter>02. Object\LobbyObjects\LobbyShip</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\KianaFire.cpp">
+      <Filter>02. Object\Player\Kiana</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LoadingUI.cpp">
+      <Filter>UI\LoadingUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Stage1StoryUI.cpp">
+      <Filter>UI\StoryUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\GameClearUI.cpp">
+      <Filter>UI\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyStageSelectUI.cpp">
+      <Filter>UI\Lobby\LobbyStageSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirBullet.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirHole.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirStar.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_Shoot.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_Storm.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\ColliderSpawnObject.cpp">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\BossSpawnObject.cpp">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MonsterSpawnObject.cpp">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MapCollision.cpp">
+      <Filter>02. Object\MapCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\DecalWind.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\LobbyValkyrieSelectZone.cpp">
+      <Filter>02. Object\LobbyObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyManager.cpp">
+      <Filter>00. PublicData</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\PlayerHitComboUI.cpp">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\TargetImageWidget.cpp">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Axe_Weapon.cpp">
+      <Filter>02. Object\AttackObject\Monster\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirHoleEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirHitEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_AirBallEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MonsterSpawnEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UIDamageText.cpp">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Effect.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\EffectTestScene.cpp">
+      <Filter>01. SceneMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TornadoEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TornadoTrailObject.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\HitEffect.cpp">
+      <Filter>02. Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyEquipmemtUI.cpp">
+      <Filter>UI\Lobby\EquipmentUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ValkyrieImageButton.cpp">
+      <Filter>UI\CustomWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyValkyrieInfoUI.cpp">
+      <Filter>UI\Lobby\LobbyValkyrie</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyLevelUpDialog.cpp">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyItemInfoDialog.cpp">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyWeaponInfoUI.cpp">
+      <Filter>UI\Lobby\WeaponInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbyWeaponLevelUpDialog.cpp">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbySupplyUI.cpp">
+      <Filter>UI\Lobby\Supply</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LobbySupplyResultUI.cpp">
+      <Filter>UI\Lobby\Supply</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Wendy_Brandish.cpp">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\PoseCopy.cpp">
+      <Filter>02. Object\PoseCopy</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\LoadingScene.cpp">
+      <Filter>01. SceneMode\LoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\LoadingThread.cpp">
+      <Filter>01. SceneMode\LoadingScene\LoadingThread</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LoadingUI_Resource.cpp">
+      <Filter>UI\LoadingUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\ExplosionEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\KnifeEffect.cpp">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\MainScene.h">
+      <Filter>01. SceneMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation\PlayerAnimation.h">
+      <Filter>03. Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\KianaPlayer.h">
+      <Filter>02. Object\Player\Kiana</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player.h">
+      <Filter>02. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\SakuraPlayer.h">
+      <Filter>02. Object\Player\Sakura</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\PlayerUI.h">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UIManager.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\PlayerTemp.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\AxeSoldier.h">
+      <Filter>02. Object\Monster\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation\AxeSoldierAnimation.h">
+      <Filter>02. Object\Monster\Axe\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicData.h">
+      <Filter>00. PublicData</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Sniper.h">
+      <Filter>02. Object\Monster\Sniper</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation\SniperAnimation.h">
+      <Filter>02. Object\Monster\Sniper\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestParticle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy.h">
+      <Filter>02. Object\Monster\Wendy</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation\WendyAnimation.h">
+      <Filter>02. Object\Monster\Wendy\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapCollision.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestParticle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StageManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\PlayerMainCamera.h">
+      <Filter>02. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MainLandScape.h">
+      <Filter>02. Object\MainLandScape</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster.h">
+      <Filter>02. Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\ClientObject.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTable\ItemDataTable.h">
+      <Filter>00. PublicData\DataTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\LoadingStartObject.h">
+      <Filter>02. Object\LoadingObject</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyMainUI.h">
+      <Filter>UI\Lobby\LobbyMainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyValkyrieSelectUI.h">
+      <Filter>UI\Lobby\LobbyValkyrie</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\LobbyScene.h">
+      <Filter>01. SceneMode\LobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTable\PlayerDataTable.h">
+      <Filter>00. PublicData\DataTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapItem.h">
+      <Filter>02. Object\MapItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapItemCoin.h">
+      <Filter>02. Object\MapItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapItemHeal.h">
+      <Filter>02. Object\MapItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapItemSPHeal.h">
+      <Filter>02. Object\MapItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\StageScene1.h">
+      <Filter>01. SceneMode\StageScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\StageScene.h">
+      <Filter>01. SceneMode\StageScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\StageScene2.h">
+      <Filter>01. SceneMode\StageScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="StageManager.h">
+      <Filter>00. PublicData\StageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\AttackObject.h">
+      <Filter>02. Object\AttackObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\SniperBillet.h">
+      <Filter>02. Object\AttackObject\Monster\SniperBillet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\SniperGrenade.h">
+      <Filter>02. Object\AttackObject\Monster\SniperBillet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\PlayerAttCol.h">
+      <Filter>02. Object\AttackObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\PlayerMainCamera.h">
+      <Filter>02. Object\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\DecalMonsterDir.h">
+      <Filter>02. Object\Decal</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\CameraMoveObject.h">
+      <Filter>02. Object\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\FadeInOutUI.h">
+      <Filter>UI\FadeInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\FadeInOut_White.h">
+      <Filter>UI\FadeInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\LobbyShip.h">
+      <Filter>02. Object\LobbyObjects\LobbyShip</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\KianaFire.h">
+      <Filter>02. Object\Player\Kiana</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LoadingUI.h">
+      <Filter>UI\LoadingUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Stage1StoryUI.h">
+      <Filter>UI\StoryUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\GameClearUI.h">
+      <Filter>UI\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyStageSelectUI.h">
+      <Filter>UI\Lobby\LobbyStageSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirBullet.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirHole.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirStar.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_Shoot.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_Storm.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\ColliderSpawnObject.h">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\BossSpawnObject.h">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MonsterSpawnObject.h">
+      <Filter>02. Object\SpawnObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MapCollision.h">
+      <Filter>02. Object\MapCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\DecalWind.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\LobbyValkyrieSelectZone.h">
+      <Filter>02. Object\LobbyObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyManager.h">
+      <Filter>00. PublicData</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\PlayerHitComboUI.h">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\TargetImageWidget.h">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Axe_Weapon.h">
+      <Filter>02. Object\AttackObject\Monster\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirHoleEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirHitEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_AirBallEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MonsterSpawnEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UIDamageText.h">
+      <Filter>UI\01. PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Effect.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EffectTestScene.h">
+      <Filter>01. SceneMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TornadoEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TornadoTrailObject.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\HitEffect.h">
+      <Filter>02. Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyEquipmemtUI.h">
+      <Filter>UI\Lobby\EquipmentUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ValkyrieImageButton.h">
+      <Filter>UI\CustomWidget</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyValkyrieInfoUI.h">
+      <Filter>UI\Lobby\LobbyValkyrie</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyLevelUpDialog.h">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyItemInfoDialog.h">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyWeaponInfoUI.h">
+      <Filter>UI\Lobby\WeaponInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbyWeaponLevelUpDialog.h">
+      <Filter>UI\Lobby\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbySupplyUI.h">
+      <Filter>UI\Lobby\Supply</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LobbySupplyResultUI.h">
+      <Filter>UI\Lobby\Supply</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Wendy_Brandish.h">
+      <Filter>02. Object\AttackObject\Monster\WendyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\PoseCopy.h">
+      <Filter>02. Object\PoseCopy</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\LoadingScene.h">
+      <Filter>01. SceneMode\LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\LoadingThread.h">
+      <Filter>01. SceneMode\LoadingScene\LoadingThread</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LoadingUI_Resource.h">
+      <Filter>UI\LoadingUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\ExplosionEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\KnifeEffect.h">
+      <Filter>02. Object\Monster\MonsterEffect</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client3D.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
