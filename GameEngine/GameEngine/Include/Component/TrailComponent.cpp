@@ -105,37 +105,35 @@ void CTrailComponent::Update(float DeltaTime)
 
 	m_TrailCBuffer->SetScale(m_Size);
 
+
 	auto iter = m_vecMatrix.begin();
 	auto iterEnd = m_vecMatrix.end();
-
 	int iCount = 0;
-
 	for (; iter != iterEnd; ++iter)
 	{
 		if (iCount >= m_VecSize)
 		{
 			iCount = m_VecSize;
-			// 10 ~ 마지막은 범위를 벗어나므로..
 			m_vecMatrix.erase(iter, iterEnd);
 			break;
 		}
 		Matrix Pos = (*iter);
 		m_LocalSwordLow =m_LocalSwordLow.TransformCoord(Pos);
-		m_LocalSwordHigh =m_LocalSwordHigh.TransformCoord(Pos);
-
-
-
+		m_LocalSwordHigh =m_LocalSwordHigh.TransformCoord(Pos);=
 		m_TrailCBuffer->SetVelocity(iCount, m_LocalSwordLow, m_LocalSwordHigh);
 
 		m_LocalSwordLow = Vector3(m_Size, 0.f, 0.f);
 		m_LocalSwordHigh = Vector3(-m_Size, 0.f, 0.f);
 		++iCount;
 	}
+
+
 	std::vector<Vector3> vecHigh;
 	std::vector<Vector3> vecLow;
 	int CallmullCount=5;
 	for (int i = 0; i < m_VecSize; ++i)
 	{
+#pragma region ZeroStart
 		if (i == 0)
 		{
 			for (int j = 0; j < CallmullCount; ++j)
@@ -144,15 +142,17 @@ void CTrailComponent::Update(float DeltaTime)
 				Vector3 vec;
 				Vector3 HighDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityHigh(i), m_TrailCBuffer->GetVelocityHigh(i),
 					m_TrailCBuffer->GetVelocityHigh(i), m_TrailCBuffer->GetVelocityHigh(i), Progress);
-	
-	
+
+
 				Vector3 LowDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityLow(i), m_TrailCBuffer->GetVelocityLow(i),
 					m_TrailCBuffer->GetVelocityLow(i), m_TrailCBuffer->GetVelocityLow(i), Progress);
 				vecHigh.push_back(HighDraw);
 				vecLow.push_back(LowDraw);
 			}
 		}
-		else if (i == m_VecSize-2)
+#pragma endregion
+#pragma region Size-2
+		else if (i == m_VecSize - 2)
 		{
 			for (int j = 0; j < CallmullCount; ++j)
 			{
@@ -160,16 +160,18 @@ void CTrailComponent::Update(float DeltaTime)
 				Vector3 vec;
 				Vector3 HighDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityHigh(i - 1), m_TrailCBuffer->GetVelocityHigh(i),
 					m_TrailCBuffer->GetVelocityHigh(i + 1), m_TrailCBuffer->GetVelocityHigh(i + 1), Progress);
-	
-	
+
+
 				Vector3 LowDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityLow(i - 1), m_TrailCBuffer->GetVelocityLow(i),
 					m_TrailCBuffer->GetVelocityLow(i + 1), m_TrailCBuffer->GetVelocityLow(i + 1), Progress);
 				vecHigh.push_back(HighDraw);
 				vecLow.push_back(LowDraw);
 			}
-	
+
 		}
-		else if (i == m_VecSize-1)
+#pragma endregion
+#pragma region Size-1
+		else if (i == m_VecSize - 1)
 		{
 			for (int j = 0; j < CallmullCount; ++j)
 			{
@@ -177,26 +179,35 @@ void CTrailComponent::Update(float DeltaTime)
 				Vector3 vec;
 				Vector3 HighDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityHigh(i), m_TrailCBuffer->GetVelocityHigh(i),
 					m_TrailCBuffer->GetVelocityHigh(i), m_TrailCBuffer->GetVelocityHigh(i), Progress);
-	
-	
+
+
 				Vector3 LowDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityLow(i), m_TrailCBuffer->GetVelocityLow(i),
 					m_TrailCBuffer->GetVelocityLow(i), m_TrailCBuffer->GetVelocityLow(i), Progress);
 				vecHigh.push_back(HighDraw);
 				vecLow.push_back(LowDraw);
 			}
 		}
+#pragma endregion
 		else
 		{
 			for (int j = 0; j < CallmullCount; ++j)
 			{
 				float Progress = (float)j / (float)CallmullCount;
 				Vector3 vec;
-				Vector3 HighDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityHigh(i - 1), m_TrailCBuffer->GetVelocityHigh(i),
-					m_TrailCBuffer->GetVelocityHigh(i + 1), m_TrailCBuffer->GetVelocityHigh(i + 2), Progress);
+				Vector3 HighDraw = vec.CatmullRom(
+					m_TrailCBuffer->GetVelocityHigh(i - 1), 
+					m_TrailCBuffer->GetVelocityHigh(i),
+					m_TrailCBuffer->GetVelocityHigh(i + 1), 
+					m_TrailCBuffer->GetVelocityHigh(i + 2), 
+					Progress);
 	
 	
-				Vector3 LowDraw = vec.CatmullRom(m_TrailCBuffer->GetVelocityLow(i - 1), m_TrailCBuffer->GetVelocityLow(i),
-					m_TrailCBuffer->GetVelocityLow(i + 1), m_TrailCBuffer->GetVelocityLow(i + 2), Progress);
+				Vector3 LowDraw = vec.CatmullRom(
+					m_TrailCBuffer->GetVelocityLow(i - 1), 
+					m_TrailCBuffer->GetVelocityLow(i),
+					m_TrailCBuffer->GetVelocityLow(i + 1), 
+					m_TrailCBuffer->GetVelocityLow(i + 2), 
+					Progress);
 				vecHigh.push_back(HighDraw);
 				vecLow.push_back(LowDraw);
 			}

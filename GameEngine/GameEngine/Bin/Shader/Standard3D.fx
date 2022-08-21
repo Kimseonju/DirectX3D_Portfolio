@@ -155,34 +155,42 @@ PS_OUTPUT_GBUFFER Standard3DPS(VS_OUTPUT_3D input)
 	output.GBuffer2.y = input.ProjPos.w;
 
 	output.GBuffer2.z = g_vMtrlSpecularColor.w;
+	//R
 	float SpecularPower= ComputeBumpSpecularPower(input.UV);
 	if (SpecularPower != 0.f)
 	{
 		output.GBuffer2.z = SpecularPower;
 	}
-	output.GBuffer2.w = g_MtrlReceiveDecal;
-	
-	output.GBuffer4.xyz = input.Tangent;
-	output.GBuffer4.a = g_MtrlShadowEnable;
-	output.GBuffer5.xyz = input.Binormal;
-	//a는 임의값으로 명암값을 넣을것..
+	{
+
+		output.GBuffer2.w = g_MtrlReceiveDecal;
+
+		output.GBuffer4.xyz = input.Tangent;
+		output.GBuffer4.a = g_MtrlShadowEnable;
+		output.GBuffer5.xyz = input.Binormal;
+	}
+	//G
 	float Threshold = ComputeBumpThreshold(input.UV);
 	output.GBuffer5.w = Threshold;
+	{
 
-	output.GBuffer3.x = ConvertColor(g_vMtrlBaseColor);
-	output.GBuffer3.y = ConvertColor(g_vMtrlAmbientColor);
+		output.GBuffer3.x = ConvertColor(g_vMtrlBaseColor);
+		output.GBuffer3.y = ConvertColor(g_vMtrlAmbientColor);
 
-	float4	MtrlSpc = g_vMtrlSpecularColor;
+		float4	MtrlSpc = g_vMtrlSpecularColor;
 
-	if (g_MtrlSpcTex)
-		MtrlSpc = g_SpecularTexture.Sample(g_AnisotropicSmp, input.UV).rrrr;
+		if (g_MtrlSpcTex)
+			MtrlSpc = g_SpecularTexture.Sample(g_AnisotropicSmp, input.UV).rrrr;
 
-	output.GBuffer3.z = ConvertColor(MtrlSpc);
+		output.GBuffer3.z = ConvertColor(MtrlSpc);
+	}
+	//B
 	float4 SpecularColor = ComputeBumpSpecularMasking(input.UV);
 	if (SpecularColor.x != 0.f)
 	{
 		output.GBuffer3.z = ConvertColor(SpecularColor);
 	}
+
 	float4	MtrlEmv = g_vMtrlEmissiveColor;
 
 	if (g_MtrlEmvTex)

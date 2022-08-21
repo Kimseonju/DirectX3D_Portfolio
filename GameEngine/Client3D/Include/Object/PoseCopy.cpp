@@ -89,3 +89,5 @@ void CPoseCopy::PoseCopy(CAnimationMeshComponent* Mesh, const Vector3& Color)
 	m_Mesh->SetAllBumpEnable(false);
 	
 }
+
+

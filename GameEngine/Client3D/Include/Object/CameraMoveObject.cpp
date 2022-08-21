@@ -70,7 +70,8 @@ CCameraMoveObject::~CCameraMoveObject()
 }
 
 
-void CCameraMoveObject::StartCameraScene(const std::string& Name, CGameObject* Obj, bool ChangeFade, float PauseTimeMax)
+void CCameraMoveObject::StartCameraScene(const std::string& Name, CGameObject* Obj, 
+	bool ChangeFade, float PauseTimeMax)
 {
 	CameraMoveInfo* Info = FindMoveInfo(Name);
 	if (!Info)
@@ -89,7 +90,6 @@ void CCameraMoveObject::StartCameraScene(const std::string& Name, CGameObject* O
 	m_pScene = CSceneManager::GetInst()->GetScene();
 	m_PrevCamera = m_pScene->GetCameraManager()->GetCurrentCamera();
 	m_pScene->GetCameraManager()->SetCurrentCamera(m_Camera);
-	
 }
 
 void CCameraMoveObject::StartCameraScene_FadeInOut(const std::string& Name, CGameObject* Obj, bool ChangeFade, float PauseTimeMax)
@@ -178,24 +178,35 @@ bool CCameraMoveObject::Init()
 	m_Camera = CreateSceneComponent<CCamera>("CameraMove");
 	SetRootComponent(m_Camera);
 	m_Camera->SetTransformState(Transform_State::None);
-
-	AddCameraMoveInfo("SakuraVictory1", "SakuraVictory2", 0.6f, nullptr, Vector3(-2.3951f, -35.722f, -4.5f), Vector3(-2.8627f, -73.40f, -4.5f),
+	AddCameraMoveInfo("SakuraVictory1", "SakuraVictory2", 
+		0.6f, nullptr, 
+		Vector3(-2.3951f, -35.722f, -4.5f), Vector3(-2.8627f, -73.40f, -4.5f),
 		1.5f, 0.f, 0.3f, 0.55f);
 
-	AddCameraMoveInfo("SakuraVictory2", "", 3.f, nullptr, Vector3(-2.3951f, 17.20f, -4.5f), Vector3(-2.3951f, -35.722f, -4.5f),
+	AddCameraMoveInfo("SakuraVictory2", "", 
+		3.f, nullptr, 
+		Vector3(-2.3951f, 17.20f, -4.5f), Vector3(-2.3951f, -35.722f, -4.5f),
 		1.5f, 0.f, 0.55f, 0.55f);
 
 	//아래왼쪽
-	AddCameraMoveInfo("Wendy1", "Wendy2", 3.f, nullptr, Vector3(3.6312f, 5.8509f, 0.f), Vector3(2.1611f, -48.5176f, 0.f),
+	AddCameraMoveInfo("Wendy1", "Wendy2", 
+		3.f, nullptr, 
+		Vector3(3.6312f, 5.8509f, 0.f), Vector3(2.1611f, -48.5176f, 0.f),
 		3.f, 1.5f, 1.5f, 1.5f);
 	//바라보기
-	AddCameraMoveInfo("Wendy2", "Wendy3", 1.3f, nullptr, Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
+	AddCameraMoveInfo("Wendy2", "Wendy3", 
+		1.3f, nullptr, 
+		Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
 		1.5f, 0.f, 1.5f, 1.5f);
 	//살짝아래
-	AddCameraMoveInfo("Wendy3", "Wendy4", 0.8f, nullptr, Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
+	AddCameraMoveInfo("Wendy3", "Wendy4", 
+		0.8f, nullptr, 
+		Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
 		1.5f, 0.2f, 1.5f, 1.5f);
 	//조금가까이
-	AddCameraMoveInfo("Wendy4", "", 1.f, nullptr, Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
+	AddCameraMoveInfo("Wendy4", "", 
+		1.f, nullptr, 
+		Vector3(3.6312f, 5.8509f, 0.f), Vector3(3.6312f, 5.8509f, 0.f),
 		1.3f, 0.1f, 1.5f, 1.4f);
 	return true;
 }
@@ -252,7 +263,7 @@ void CCameraMoveObject::Update(float DeltaTime)
 		m_MoveInfo->start += DeltaTime;
 		if (m_MoveInfo->start >= m_MoveInfo->end)
 		{
-			if (!m_MoveInfo->NextName.empty())
+			if (!m_MoveInfo->NextName.empty()) //다음 카메라 움직임이 있을시
 			{
 				CameraMoveInfo* Info = FindMoveInfo(m_MoveInfo->NextName);
 				Info->Target = m_MoveInfo->Target;
@@ -266,37 +277,38 @@ void CCameraMoveObject::Update(float DeltaTime)
 					m_MoveInfo->StartMove = Pos;
 					Pos.y -= m_MoveInfo->EndMoveY;
 					m_MoveInfo->EndMove = Pos;
-					//이동값 설정 완료
 					Pos = m_MoveInfo->StartMove;
 					Rot = m_MoveInfo->StartRotation;
 				}
 			}
-			else
+			else //없을시
 			{
+#pragma region Clear
 				if (m_MoveInfo->Name == "SakuraVictory2" && !CEngine::GetInst()->IsEditor())
 				{
-					CGameClearUI* ClearUI = (CGameClearUI *)CUIManager::GetInst()->FindWidgetWindow("GameClearUI");
+					CGameClearUI* ClearUI = (CGameClearUI*)CUIManager::GetInst()->FindWidgetWindow("GameClearUI");
 					ClearUI->Enable(true);
-					CStageManager* Manager=CStageManager::GetInst();
+					CStageManager* Manager = CStageManager::GetInst();
 					ClearUI->SetComboText(Manager->GetHitComboMax());
 					ClearUI->SetClearTimeText((int)Manager->GetPlayTime());
 				}
+#pragma endregion
 				m_PauseTime += DeltaTime;
 				if (m_PauseTime > m_PauseTimeMax)
 				{
-					
 					m_End = true;
-					if (CEngine::GetInst()->IsEditor())
+					if (CEngine::GetInst()->IsEditor()) //Editor용
 					{
-						m_pScene->GetCameraManager()->SetCurrentCamera(m_PrevCamera);
+						m_pScene->GetCameraManager()->SetCurrentCamera(m_PrevCamera); //기존의 카메라로
 						return;
 					}
+#pragma region FadeInOutEffect
 					if (m_ChangeFadePlay)
 					{
 						if (m_FadeBlack)
 						{
 							CFadeInOut_White* FadeInout = (CFadeInOut_White*)CUIManager::GetInst()->FindWidgetWindow("FadeInOutUI");
-							if (!FadeInout->IsFadeIn()&&!CEngine::GetInst()->IsEditor())
+							if (!FadeInout->IsFadeIn() && !CEngine::GetInst()->IsEditor())
 							{
 								m_pScene->GetCameraManager()->SetCurrentCamera(m_PrevCamera);
 								FadeInout->SetFadeOut();
@@ -334,6 +346,7 @@ void CCameraMoveObject::Update(float DeltaTime)
 							m_ChangeFade = false;
 						}
 					}
+#pragma endregion
 					else
 					{
 						m_pScene->GetCameraManager()->SetCurrentCamera(m_PrevCamera);
@@ -364,7 +377,6 @@ void CCameraMoveObject::Update(float DeltaTime)
 				m_MoveInfo->StartMove = Pos;
 				Pos.y -= m_MoveInfo->EndMoveY;
 				m_MoveInfo->EndMove = Pos;
-				//이동값 설정 완료
 				Pos = m_MoveInfo->StartMove;
 				Rot = m_MoveInfo->EndRotation+Target->GetWorldRotation();
 			}
@@ -373,18 +385,16 @@ void CCameraMoveObject::Update(float DeltaTime)
 				Pos = m_MoveInfo->StartMove;
 				float y = m_MoveInfo->StartMove.y;
 				Pos.y -= m_MoveInfo->EndMoveY * Percent;
-				//카메라는 역으로돌아가있으므로 반대로계산
-				Rot = Vector3::Lerp3D(m_MoveInfo->EndRotation + Target->GetWorldRotation(), m_MoveInfo->StartRotation + Target->GetWorldRotation(), Percent);
+				Rot = Vector3::Lerp3D(m_MoveInfo->EndRotation + Target->GetWorldRotation(), 
+					m_MoveInfo->StartRotation + Target->GetWorldRotation(), 
+					Percent);
 			}
 			SetWorldPos(Pos);
 			SetWorldRotation(Rot);
-			//회전과 방향을 잡았다. 이제 거리를 계산한다.
 			float StartLength = m_MoveInfo->StartLength;
 			float EndLength = m_MoveInfo->EndLength;
 			float RtnLength = m_MoveInfo->EndLength - m_MoveInfo->StartLength;
-
 			RtnLength = StartLength + RtnLength * Percent;
-
 			Vector3 NextPos = Pos + m_Offset + GetAxis(AXIS_Z) * -RtnLength;
 			SetWorldPos(NextPos);
 		}

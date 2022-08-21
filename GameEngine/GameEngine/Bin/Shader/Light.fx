@@ -52,48 +52,43 @@ LightResult ComputeLightGBuffer(float3 Pos, float3 Normal, float2 UV, float Spec
 
 	float3	LightDir = (float3)0.f;
 	float	Attn = 1.f;
-
-	if (g_LightLightType == LightTypeDir)
+	//LightType
 	{
-		LightDir = -g_LightDir;
-		LightDir = normalize(LightDir);
-	}
-
-	if (g_LightLightType == LightTypePoint)
-	{
-		LightDir = g_LightPos - Pos;
-		LightDir = normalize(LightDir);
-
-		float	Dist = distance(g_LightPos, Pos);
-
-		if (Dist > g_LightDistance)
-			Attn = 0.f;
-
-		else
+		if (g_LightLightType == LightTypeDir)
 		{
-			Attn = 1.f / (g_LightAtt1 + g_LightAtt2 * Dist + g_LightAtt3 * (Dist * Dist));
+			LightDir = -g_LightDir;
+			LightDir = normalize(LightDir);
+		}
+
+		if (g_LightLightType == LightTypePoint)
+		{
+			LightDir = g_LightPos - Pos;
+			LightDir = normalize(LightDir);
+
+			float	Dist = distance(g_LightPos, Pos);
+
+			if (Dist > g_LightDistance)
+				Attn = 0.f;
+
+			else
+			{
+				Attn = 1.f / (g_LightAtt1 + g_LightAtt2 * Dist + g_LightAtt3 * (Dist * Dist));
+			}
+		}
+
+		if (g_LightLightType == LightTypeSpot)
+		{
 		}
 	}
-
-	if (g_LightLightType == LightTypeSpot)
-	{
-	}
-
-	// Color를 얻어온다.
+	
 	float4	MtrlDif = ConvertColor(MtrlColor.x);
 	float4	MtrlAmb = ConvertColor(MtrlColor.y);
 	float4	MtrlSpc = ConvertColor(MtrlColor.z);
 	float4	MtrlEmv = ConvertColor(MtrlColor.w);
-
 	float	Intensity = max(0.f, dot(Normal, LightDir));
 
 	result.Dif = g_LightDiffuse * MtrlDif * Intensity * Attn;
 	result.Amb = g_LightAmbient * MtrlAmb * Attn;
-	//if (GBuffer4.z == 0.f)
-	//{
-	//	//그림자컬러GBuffer5.z;
-	//
-	//}
 	if (g_PostProcessToonShader==1)
 	{
 		if (result.Dif.x/2.f > GBuffer5.w)
@@ -103,15 +98,11 @@ LightResult ComputeLightGBuffer(float3 Pos, float3 Normal, float2 UV, float Spec
 			result.Dif.rgb *= 2.f;
 		}
 	}
-	//result.Dif = ceil(result.Dif * 5) / 5.f;
-
 	// 비금속 표면에 대한 Specular 처리를 위해 반사벡터를 구한다.
 	float3	Reflect = 2.f * dot(Normal, LightDir) * Normal - LightDir;
 	Reflect = normalize(Reflect);
-
 	float3	View = -Pos;
 	View = normalize(View);
-
 	result.Spc = g_LightSpecular * MtrlSpc *
 		pow(max(0.f, dot(View, Reflect)), SpecularPower) * Attn;
 

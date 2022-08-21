@@ -16,14 +16,13 @@ CPlayerAnimation::~CPlayerAnimation()
 {
 }
 
-void CPlayerAnimation::AddAnimationSequence_Player(const std::string& Name, AnimType Type, int iFrame, bool RootMotion, int RootLastFrame, bool RootMotionX, bool RootMotionY, bool RootMotionZ, int StartFrame)
+void CPlayerAnimation::AddAnimationSequence_Player(const std::string& Name, AnimType Type, 
+	int iFrame, bool RootMotion, int RootLastFrame, bool RootMotionX, bool RootMotionY, 
+	bool RootMotionZ, int StartFrame)
 {
 	CAnimationSequence* Sequence = FindSequence(Name);
-
 	if (Sequence)
-	{
-
-	}
+	{}
 	else
 	{
 		Sequence = m_Scene->GetResource()->FindAnimationSequence(Name);
@@ -41,7 +40,6 @@ void CPlayerAnimation::AddAnimationSequence_Player(const std::string& Name, Anim
 	Sequence->SetLoop(true);
 	if (!m_Sequence)
 		m_Sequence = Sequence;
-
 	m_Sequence_Player[Type] = Sequence;
 }
 

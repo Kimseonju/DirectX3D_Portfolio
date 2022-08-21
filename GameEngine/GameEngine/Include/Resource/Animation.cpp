@@ -464,19 +464,12 @@ void CAnimation::Update(float DeltaTime)
 	// Bone 결과 버퍼 갱신
 	m_OutputBuffer->SetShader(0);
 
-	// 상수버퍼를 갱신한다.
 	m_CBuffer->UpdateCBuffer();
-
-	// Sequence에 있는 구조화 버퍼를 갱신한다.
 	m_Sequence->SetShader();
-
-	// Offset 행렬을 갱신한다.
 	m_Skeleton->SetShader();
-
 	m_BoneBuffer->SetShader(1);
 	m_BoneRootBuffer->SetShader(2);
 	unsigned int	GroupX = (unsigned int)m_Skeleton->GetBoneCount() / 256 + 1;
-
 	m_AnimationUpdateShader->Excute(GroupX, 1, 1);
 
 	m_BoneRootBuffer->ResetShader(2);
@@ -485,16 +478,12 @@ void CAnimation::Update(float DeltaTime)
 	m_Sequence->ResetShader();
 	m_OutputBuffer->ResetShader(0);
 
-
 	CDevice::GetInst()->GetContext()->CopyResource(m_BoneDataBuffer, m_BoneBuffer->GetBuffer());
 	memcpy(&m_vecBoneMatrix[0], m_BoneResourceAddress, sizeof(Matrix) * m_vecBoneMatrix.size());
-
 	CDevice::GetInst()->GetContext()->CopyResource(m_BoneRootDataBuffer, m_BoneRootBuffer->GetBuffer());
 	memcpy(&m_RootBoneMatrix[0], m_BoneRootResourceAddress, sizeof(Matrix) * m_RootBoneMatrix.size());
-
 	if (m_Sequence->IsRootMotion())
 	{
-
 		if (m_RootBoneIndex != -1)
 		{
 			m_PrevRootMotionPos = m_NextRootMotionPos;

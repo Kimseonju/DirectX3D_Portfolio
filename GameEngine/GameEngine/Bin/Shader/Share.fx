@@ -239,49 +239,38 @@ float3 ComputeBumpNormal(float3 Normal, float3 Tangent, float3 Binormal, float2 
 
 	return result;
 }
-//임의수정 범프X
+
 float ComputeBumpSpecularPower(float2 UV)
 {
 	//R
 	float	result = 0.f;
-
 	if (g_MtrlBumpEnable == 1 && g_PostProcessToonShader==1)
 	{
 		float4	NormalColor = g_NormalTexture.Sample(g_AnisotropicSmp, UV);
-
 		result = NormalColor.r;
 	}
-
 	return result;
 }
-//임의수정 범프X
 float4 ComputeBumpSpecularMasking(float2 UV)
 {
 	//B
 	float4	result = 0.f;
-
 	if (g_MtrlBumpEnable == 1 && g_PostProcessToonShader == 1)
 	{
 		float4	NormalColor = g_NormalTexture.Sample(g_AnisotropicSmp, UV);
-
 		result = float4(NormalColor.b, NormalColor.b, NormalColor.b, NormalColor.b);
 	}
-
 	return result;
 }
-
 float ComputeBumpThreshold(float2 UV)
 {
 	//G
 	float	result = 1.f;
-
 	if (g_MtrlBumpEnable == 1 && g_PostProcessToonShader == 1)
 	{
 		float4	NormalColor = g_NormalTexture.Sample(g_AnisotropicSmp, UV);
-
 		result = NormalColor.g;
 	}
-
 	return result;
 }
 

@@ -253,7 +253,7 @@ void CPlayer::Update(float DeltaTime)
 		{
 			PlayerDir FirstCheckNum = m_KeyPush[Size - 1];
 			PlayerDir LastCheckNum = m_KeyPush[Size - 2];
-			//왼쪽오른쪽 또는 위아래임 우선순위높은것기준으로 움직이기
+			//우선순위높은것기준으로 움직이기
 			if ((FirstCheckNum == PlayerDir::Left && LastCheckNum==PlayerDir::Right) ||
 				(FirstCheckNum == PlayerDir::Right && LastCheckNum == PlayerDir::Left) ||
 				(FirstCheckNum == PlayerDir::Front && LastCheckNum == PlayerDir::Back)|| 
@@ -282,7 +282,7 @@ void CPlayer::Update(float DeltaTime)
 			PlayerDir FirstCheckNum = m_KeyPush[Size - 1];
 			Angle = GetDirAngle(FirstCheckNum);
 		}
-
+#pragma region ChangeState_Move
 		if (PlayerState::Idle == m_State
 			|| PlayerState::Combat == m_State
 			|| PlayerState::CombatToIdle == m_State
@@ -295,12 +295,9 @@ void CPlayer::Update(float DeltaTime)
 			m_Root->SetWorldRotationY(Rotation.y + Angle);
 			m_MoveDirAngle = Angle;
 		}
+#pragma endregion
+	}
 
-	}
-	else
-	{
-		
-	}
 }
 
 void CPlayer::PostUpdate(float DeltaTime)
@@ -405,9 +402,10 @@ void CPlayer::ReleaseRightMove(float Time)
 
 void CPlayer::Attack(float Time)
 {
+#pragma region CanAttack?
+
 	if (!IsEnable())
 		return;
-
 	if (PlayerState::Die == m_State
 		|| PlayerState::Evade == m_State
 		|| PlayerState::Failure == m_State
@@ -415,8 +413,7 @@ void CPlayer::Attack(float Time)
 		|| PlayerState::Hit_L == m_State
 		|| PlayerState::Win == m_State)
 		return;
-
-
+#pragma endregion
 	m_AttackClick = true;
 	m_Target = CStageManager::GetInst()->GetMonsterTarget(GetWorldPos());
 	if (m_Target)
@@ -424,32 +421,23 @@ void CPlayer::Attack(float Time)
 		Vector3	Dir = m_Target->GetWorldPos() - GetWorldPos();
 		Dir.y = 0.f;
 		Dir.Normalize();
-
-
 		Vector3 v1 = Dir;
 		Vector3 v2 = Vector3(0, 0, -1);
-
 		v1.Normalize();
 		v2.Normalize();
-
 		float   Dot = v1.Dot(v2);
-
 		float Angle = RadianToDegree(acosf(Dot));
-
 		if (m_Target->GetWorldPos().x > GetWorldPos().x)
 			Angle = 360.f - Angle;
 		SetWorldRotationY(Angle);
 	}
 	if (PlayerState::Attack == m_State)
 	{
-
 	}
 	else
 	{
-		//Idle->Attack
 		PlayerFSM.ChangeState("Attack");
 	}
-	
 }
 
 void CPlayer::UltraSkill(float Time)
@@ -489,7 +477,6 @@ void CPlayer::UltraSkillAttack()
 
 void CPlayer::IdleStart()
 {
-	//이동과 공격상태일때의 교체
 	if (PlayerState::Move == m_State)
 	{
 		m_Animation->ChangeAnimType(AnimType::MoveToIdle);
@@ -498,13 +485,16 @@ void CPlayer::IdleStart()
 	{
 		m_Animation->ChangeAnimType(AnimType::CombatIdle);
 	}
-	else //조건이무얼까..
+	else 
 	{
 		m_Animation->ChangeAnimType(AnimType::Idle);
 	}
+#pragma region AttackComboClear
 	m_AttackCombo = 0;
 	m_AttackComboPlay = false;
 	m_State = PlayerState::Idle;
+
+#pragma endregion
 }
 
 void CPlayer::IdleStay()
@@ -544,6 +534,7 @@ void CPlayer::AttackStart()
 
 void CPlayer::AttackStay()
 {
+#pragma region UltraSkillAttack
 	if (m_UltraSkillAttack)
 	{
 		if (m_AttackClick)
@@ -552,6 +543,7 @@ void CPlayer::AttackStay()
 			m_AttackClick = false;
 		}
 	}
+#pragma endregion
 	else if (m_AttackComboPlay)
 	{
 		if (m_AttackClick)
@@ -566,13 +558,14 @@ void CPlayer::AttackStay()
 			else
 			{
 				switch (m_AttackCombo)
-				{//여기서들어오는건 무조건 COmbat또는 어택1번한 이후
+				{
 				case 0:
 					m_Animation->ChangeAnimType(AnimType::Attack1Combat);
 					break;
 				case 1:
 					m_Animation->ChangeAnimType(AnimType::Attack2);
 					break;
+#pragma region AttackComboAnimation...
 				case 2:
 					m_Animation->ChangeAnimType(AnimType::Attack3);
 					break;
@@ -582,6 +575,7 @@ void CPlayer::AttackStay()
 				case 4:
 					m_Animation->ChangeAnimType(AnimType::Attack5);
 					break;
+#pragma endregion
 				}
 				m_AttackClick = false;
 				m_AttackComboPlay = false;
@@ -830,6 +824,7 @@ void CPlayer::VictoryIdleEnd()
 
 void CPlayer::AnimationNotify(const std::string& Name)
 {
+#pragma region AttackNotify
 	if (Name == "AttackCombo")
 	{
 		m_AttackCombo++;
@@ -840,11 +835,12 @@ void CPlayer::AnimationNotify(const std::string& Name)
 		m_AttackComboPlay = true;
 		m_AttackChargeCombo = true;
 	}
-
+#pragma endregion
 	else if (Name == "Sound")
 	{
 		m_Animation->SoundPlay();
 	}
+#pragma region ...
 	else if (Name == "ChangeIdle")
 	{
 		PlayerFSM.ChangeState("Idle");
@@ -854,6 +850,7 @@ void CPlayer::AnimationNotify(const std::string& Name)
 	{
 		m_pScene->GetResource()->FindSound3D("PlayerRunSound")->Play3D(GetWorldPos());
 	}
+#pragma endregion
 }
 
 void CPlayer::UltraSkillEffect1()
