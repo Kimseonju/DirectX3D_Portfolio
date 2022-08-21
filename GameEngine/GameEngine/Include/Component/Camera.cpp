@@ -254,7 +254,6 @@ void CCamera::StartShake(float fAmplitude, float fFrequency, float fTime)
 	m_ShakeTimeMax = fTime;
 	m_ShakeTime = 0.0f;
 }
-
 void CCamera::EndShake()
 {
 	m_Shake = false;
@@ -262,14 +261,14 @@ void CCamera::EndShake()
 	m_ShakeFrequency = 0.0f;
 	m_ShakeTime = 0.0f;
 }
-
 Vector3 CCamera::UpdateShake(float DeltaTime)
 {
 	if (m_Shake)
 	{
 		m_ShakeTime += DeltaTime;
 		float Progress = m_ShakeTime / m_ShakeTimeMax;
-		float Magnitude = (sinf(m_ShakeTime * m_ShakeFrequency) * m_ShakeAmplitude) * (1.0f - Progress);
+		float Magnitude = (sinf(m_ShakeTime * m_ShakeFrequency) * m_ShakeAmplitude) * 
+			(1.0f - Progress);
 
 		if (Progress >= 1.0f)
 		{
@@ -281,8 +280,6 @@ Vector3 CCamera::UpdateShake(float DeltaTime)
 		return Vector3::GetRandomDir() * Magnitude;
 	}
 	else
-	{
 		return Vector3::Zero;
-	}
 }
 

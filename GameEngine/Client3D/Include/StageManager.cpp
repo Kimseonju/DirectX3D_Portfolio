@@ -119,7 +119,6 @@ CMonster* CStageManager::GetMonsterTarget(const Vector3& vec)
 	float Length = 10.f;
 	for (size_t i = 0; i < Size; ++i)
 	{
-		
 		if (m_SpawnMonsters[i]->IsEnable()&& m_SpawnMonsters[i]->GetHp()>0)
 		{
 			float Len = (vec - m_SpawnMonsters[i]->GetWorldPos()).Length();

@@ -582,6 +582,7 @@ void CPlayer::AttackStay()
 			}
 		}
 	}
+#pragma region EndAttack
 	if (m_Animation->IsEndNextFrame())
 	{
 		m_AttackClick = false;
@@ -590,6 +591,7 @@ void CPlayer::AttackStay()
 		m_AttackChargeCombo = false;
 		m_AttackCombo = 0;
 	}
+#pragma endregion
 }
 
 void CPlayer::AttackEnd()
@@ -836,10 +838,14 @@ void CPlayer::AnimationNotify(const std::string& Name)
 		m_AttackChargeCombo = true;
 	}
 #pragma endregion
+#pragma region SoundPlay
 	else if (Name == "Sound")
 	{
 		m_Animation->SoundPlay();
 	}
+#pragma endregion
+
+	
 #pragma region ...
 	else if (Name == "ChangeIdle")
 	{

@@ -119,7 +119,7 @@ void CTrailComponent::Update(float DeltaTime)
 		}
 		Matrix Pos = (*iter);
 		m_LocalSwordLow =m_LocalSwordLow.TransformCoord(Pos);
-		m_LocalSwordHigh =m_LocalSwordHigh.TransformCoord(Pos);=
+		m_LocalSwordHigh =m_LocalSwordHigh.TransformCoord(Pos);
 		m_TrailCBuffer->SetVelocity(iCount, m_LocalSwordLow, m_LocalSwordHigh);
 
 		m_LocalSwordLow = Vector3(m_Size, 0.f, 0.f);

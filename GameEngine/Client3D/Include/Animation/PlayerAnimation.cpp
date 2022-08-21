@@ -67,12 +67,9 @@ void CPlayerAnimation::ChangeAnimType(AnimType Type)
 {
 	if (m_mapSequence.empty())
 		return;
-
-	//같은 애니메이션일때도있음
 	if (m_Sequence == m_Sequence_Player[Type])
 		return;
 	m_CurType = Type;
-
 	m_ChangeSequence = m_Sequence_Player[Type];
 	m_SoundGroup->stop();
 	m_SoundCVGroup->stop();
