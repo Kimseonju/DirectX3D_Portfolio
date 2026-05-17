@@ -1,7 +1,6 @@
 # DirectX3D Portfolio — 붕괴3rd 모작
 
 DirectX 11 자체 엔진 기반 3D 액션 게임.
-Player, Animation, Camera, UI, Editor, Effect 영역 전반 구현.
 
 ## 시연 영상
 
@@ -15,8 +14,6 @@ https://youtu.be/HO_MjW86Ys0
 | 기간    | 2022.02 ~ 2022.04                                                     |
 | 환경    | Visual Studio 2019                                                    |
 | 도구    | DirectX 11, HLSL, DirectInput, FMOD, ImGui, ImGuizmo, ImGuiFileDialog |
-| 협업    | Azure DevOps                                                          |
-| 담당    | Player / Animation / Camera / UI / Editor / Effect                    |
 
 ## 씬 흐름
 
@@ -742,16 +739,4 @@ public:
 | `LobbyShip` / `LobbyValkyrieSelectZone` | 로비 오브젝트 |
 | `LoadingStartObject` | 로딩 화면 진입 오브젝트 |
 
----
 
-# 기술 스택
-
-- C++, DirectX 11, HLSL
-- FMOD, ImGui, ImGuizmo, ImGuiFileDialog
-- 자체 FSM (멤버 함수 포인터 콜백) — 캐릭터·보스·잡몹별 분리
-- AnimationEndFunc 콜백, Root Motion (RootMotionX/Y/Z)
-- WorldToScreen UI 연동
-- TrailComponent 기반 검 궤적 (SakuraPlayer)
-- 붕괴3 Shadow Threshold 카툰 렌더링 (Deferred Rendering 통합)
-- 멀티스레드 리소스 로딩 (CThread)
-- ImGui 인스펙터 5종 자체 추가
