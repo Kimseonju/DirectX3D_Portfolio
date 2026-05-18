@@ -273,6 +273,92 @@ private:
 **핸들러 등록 패턴**: `Start / Stay / End` 3-페이즈 + AnimationNotify 콜백
 **다음 상태 선택**: 현재/이전/다음 enum + RandomCount로 패턴 결정
 
+### FSM CreateState 등록 패턴
+
+```cpp
+void CWendy::CreateFSM()
+{
+    // CreateState(이름, Owner, Stay, Start, End)
+    m_FSM.CreateState("Spawn",     this,
+        &CWendy::Wendy_Spawn_Stay,
+        &CWendy::Wendy_Spawn_Start,
+        &CWendy::Wendy_Spawn_End);
+    m_FSM.CreateState("Idle",      this, &Wendy_Idle_Stay,      &Wendy_Idle_Start,      &Wendy_Idle_End);
+    m_FSM.CreateState("Move",      this, &Wendy_Move_Stay,      &Wendy_Move_Start,      &Wendy_Move_End);
+    m_FSM.CreateState("AttackHub", this, &Wendy_AttackHub_Stay, &Wendy_AttackHub_Start, &Wendy_AttackHub_End);
+    m_FSM.CreateState("Death",     this, &Wendy_Death_Stay,     &Wendy_Death_Start,     &Wendy_Death_End);
+
+    m_FSM.ChangeState("Spawn");
+}
+```
+
+### Wendy_AttackHub_Start — 거리 기반 패턴 선택
+
+```cpp
+void CWendy::Wendy_AttackHub_Start()
+{
+    LookObject();
+    m_State = Wendy_State::Attack;
+
+    if (Wendy_AttackState::None == m_AttackState)
+    {
+        // 1. 새 패턴 무작위 선택
+        m_RandomCount = GetRandom(0, 2);
+        m_AttackState = (Wendy_AttackState)GetRandom(1, (int)Wendy_AttackState::End - 1);
+
+        // 2. RandomCount > 0 → Glide(회피) 페이크 모션
+        if (0 != m_RandomCount)
+        {
+            int Ani = GetRandom(1, 2);
+            if (Ani == 1) m_Animation->ChangeAnimation("Wendy_GlideLeft");
+            else          m_Animation->ChangeAnimation("Wendy_GlideRight");
+            m_RandomCount--;
+        }
+        else
+        {
+            // 3. 거리 체크 → 공격 or Move
+            switch (m_AttackState)
+            {
+            case Wendy_AttackState::Brandish:   // 근접 스킬
+                if (Wendy_ShortAttack_Dir >= m_PlayerDir)
+                    m_Animation->ChangeAnimation("Wendy_Brandish");
+                else {
+                    m_PointDir = Wendy_ShortAttack_Dir;
+                    m_FSM.ChangeState("Move");  // 가까이 간 후 다시 AttackHub
+                }
+                break;
+
+            case Wendy_AttackState::AIrShoot:   // 원거리 스킬
+                if (Wendy_LongAttack_Dir >= m_PlayerDir)
+                    m_Animation->ChangeAnimation("Wendy_AirShoot");
+                else {
+                    m_PointDir = Wendy_LongAttack_Dir - 2;
+                    m_FSM.ChangeState("Move");
+                }
+                break;
+
+            // AirHole, Storm, AirBullet, AirStar, Tornado 동일 패턴
+            }
+        }
+    }
+}
+```
+
+- **`Wendy_AttackState` 7종**: `AIrShoot`, `AirHole`, `Brandish`, `Storm`, `AirBullet`, `AirStar`, `Tornado`
+- **근접 / 원거리 거리 기준** 별도 (`Wendy_ShortAttack_Dir` / `Wendy_LongAttack_Dir`)
+- 거리 부족 시 `m_PointDir` 갱신 후 `Move` 상태 → 가까이 간 후 다시 AttackHub
+- `Glide` (Left / Right / Back) — 패턴 시작 전 회피·페이크 모션
+
+### IsDeath 처리
+
+```cpp
+void CWendy::IsDeath()
+{
+    m_Body->Enable(false);          // 콜리전 해제
+    m_FSM.ChangeState("Death");     // Death 상태로
+}
+```
+
 ---
 
 # Animation (콜백 + Root Motion)
@@ -306,6 +392,66 @@ public:
 
 - 애니메이션 종료 시점에 등록된 `m_AnimationEndFunc` 호출 → FSM 다음 상태 전환
 - **Root Motion 옵션** — 본 위치 변화량을 캐릭터 트랜스폼에 반영
+
+### PostUpdate — 애니메이션 종료 콜백
+
+```cpp
+void CWendyAnimation::PostUpdate(float DeltaTime)
+{
+    CAnimation::PostUpdate(DeltaTime);
+
+    if (m_End)
+    {
+        // 시퀀스 이름을 인자로 owner의 콜백 함수 호출
+        (m_Owner->*m_AnimationEndFunc)(GetSequence()->GetName());
+    }
+}
+```
+
+`m_End` 플래그가 true가 되는 순간 owner(Wendy)에 등록된 함수 포인터를 호출 → FSM의 다음 상태 전환 트리거.
+
+### Init에서 시퀀스 + Notify + Sound 일괄 등록
+
+```cpp
+void CWendyAnimation::Init()
+{
+    // 1. 시퀀스 등록 (15종) - Loop, Frame, RootMotion XYZ
+    AddAnimationSequence("Wendy_Born",       false, 35, true, 0,  false, false, false);
+    AddAnimationSequence("Wendy_Idle",       true,  60, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_Run",        true,  60, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_AirShoot",   true,  60, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_AirHole",    true,  60, true, 63, true,  true,  true);
+    AddAnimationSequence("Wendy_Brandish",   true,  60, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_Storm",      false, 35, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_LongAttack", true,  60, true, 0,  true,  true,  true);
+    AddAnimationSequence("Wendy_Die",        false, 10, true, 0,  true,  true,  true);
+    // ... GlideBack/Left/Right, Brandish_1, StunStart/End
+
+    // 2. 시각 Notify 등록 (키프레임 → 이벤트 이름)
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_Storm",      "StormStart",    1);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_Storm",      "StormEnd",      120);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_Brandish",   "BrandishFirst", 20);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_Brandish",   "BrandishSecond",40);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_GlideLeft",  "PlayerSearch_Start", 5);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_LongAttack", "LongAttack1",   60);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_LongAttack", "LongAttack2",   110);
+    m_Scene->GetResource()->AddAnimationSequenceNotify("Wendy_LongAttack", "LongAttack3",   180);
+    // ... PlayerSearch_End, ShootAir, ShootHole, StartStorm, StartBrandish
+
+    // 3. 3D 사운드 Notify 등록 (위치 기반 사운드)
+    AddAnimationSequenceSound3DNotify("Wendy_Born",      "Wendy_Born",      1);
+    AddAnimationSequenceSound3DNotify("Wendy_GlideBack", "Wendy_Glide_2",   1);
+    AddAnimationSequenceSound3DNotify("Wendy_GlideLeft", "Wendy_Glide_1",   1);
+    AddAnimationSequenceSound3DNotify("Wendy_AirHole",   "Wendy_AirHole",   40);
+    AddAnimationSequenceSound3DNotify("Wendy_Brandish",  "Wendy_Brandish_1", 1);
+    AddAnimationSequenceSound3DNotify("Wendy_Brandish",  "Wendy_Brandish_2", 20);
+}
+```
+
+- **시퀀스 15종** 등록 (Born, Idle, Run, RunStart, Glide×3, AirShoot, AirHole, Brandish×2, LongAttack, Storm, StunStart/End, Die)
+- **시각 Notify**: 키프레임마다 게임 로직 이벤트 발생 (`LongAttack` 1·2·3 단계 등)
+- **3D 사운드 Notify**: 위치 기반 사운드 자동 재생 (예: Glide 시작 시 슝 소리)
+- `LongAttack1/2/3` — 3단계 콤보 패턴
 
 ## Root Motion 흐름
 
@@ -353,6 +499,65 @@ private:
 - 마우스 휠 줌, 우클릭 자유 회전
 - 몬스터 타겟이 잡힌 경우 위치 추적 보조
 
+### 벽 충돌 + 락온 거리 조정 (실제 구현)
+
+```cpp
+void CPlayerMainCamera::Update(float DeltaTime)
+{
+    float Length = m_Length;
+
+    // 1. 몬스터 락온 시 — 거리 자동 조정 + 타겟 마커 표시
+    if (m_MonsterTarget)
+    {
+        Vector3 MonsterTarget = m_MonsterTarget->GetWorldPos();
+        MonsterTarget.y += 1.0f;
+        Vector2 Pos = m_Camera->WorldToScreen(MonsterTarget);   // 월드 → 스크린
+
+        TargetImageWidget->SetPos(Pos);
+        TargetImageWidget->SetSizePercent(1.f / Length);        // 거리 멀수록 작게
+        TargetImageWidget->Enable(true);
+
+        // 카메라 거리 = (플레이어-적 거리)/2 + 2.5
+        Length = (m_Target->GetWorldPos() - m_MonsterTarget->GetWorldPos()).Length() / 2.f + 2.5f;
+    }
+
+    // 2. 벽 충돌 체크
+    Vector3 TargetPos = m_Target->GetWorldPos();
+    HitResult Result;
+    if (CCollisionRay::GetInst()->LineTraceSingleByChannel(
+            m_pScene, Result, GetWorldPos(),
+            TargetPos + m_Offset + GetAxis(AXIS_Z) * -Length, "MapCollision"))
+    {
+        Length = (Result.HitPoint - GetWorldPos()).Length();    // 벽까지로 거리 단축
+    }
+
+    // 3. Lerp 보간 — 7배속
+    Vector3 NextPos = TargetPos + m_Offset + GetAxis(AXIS_Z) * -Length;
+    if (!m_MouseClick)
+        NextPos = Vector3::Lerp3D(GetWorldPos(), NextPos, DeltaTime * 7.f);
+    SetWorldPos(NextPos);
+}
+
+void CPlayerMainCamera::CameraWheel(float Time)
+{
+    float Wheel = CInput::GetInst()->GetMouseWheel() * Time;
+    m_Length += Wheel;
+    m_Length = FMath::Clamp(m_Length, 1.f, 3.f);       // 줌 범위 1~3
+}
+
+void CPlayerMainCamera::MouseClick(float Time)
+{
+    m_MouseClick = true;
+    Vector2 MovePos = CInput::GetInst()->GetMouseMove();
+    m_Camera->AddWorldRotationY(MovePos.x * Time * 20.f);   // 마우스 X → Yaw 회전
+}
+```
+
+- **벽 통과 방지** — `CCollisionRay::LineTraceSingleByChannel`로 카메라↔플레이어 사이 벽 감지 시 거리 단축
+- **락온 모드** — 적 잡힌 상태에서 카메라 거리 자동 조정 + `TargetImageWidget` WorldToScreen으로 적 위치에 마커 (거리에 따라 크기 변화)
+- **Lerp 보간** — `DeltaTime * 7.f` 속도 (우클릭 중에는 보간 끄고 직접 회전)
+- **줌 범위 클램프** — `m_Length`를 1.0 ~ 3.0 범위로 제한
+
 ## CameraMoveObject (시네마틱 카메라)
 
 스폰 컷씬·궁극기 컷씬 등에서 카메라 위치/회전을 스크립트로 이동.
@@ -399,6 +604,69 @@ public:
 - `m_TargetPos`를 매 프레임 WorldToScreen 변환해 위젯 위치 갱신
 - 자리수별 숫자 이미지 3장 합성 (100/10/1)
 - `m_Alpha`와 `m_LifeTime`으로 페이드아웃
+
+### 자리수 분리 / 0 자리 생략 / 페이드아웃 (실제 구현)
+
+```cpp
+CUIDamageText::CUIDamageText() :
+    m_LifeTime(2.f),     // 2초 생존
+    m_Alpha(1.f)
+{
+}
+
+void CUIDamageText::Update(float DeltaTime)
+{
+    m_LifeTime -= DeltaTime;
+    Vector2 Pos = GetPos();
+    Pos.y += DeltaTime * 40.f;   // 위로 둥둥 떠오름
+    SetPos(Pos);
+
+    if (m_LifeTime < 0.f) { Active(false); return; }
+
+    // 알파 = 남은 LifeTime → 자연 페이드아웃
+    m_Image100->SetColorTint(1.f, 1.f, 1.f, m_LifeTime);
+    m_Image10 ->SetColorTint(1.f, 1.f, 1.f, m_LifeTime);
+    m_Image1  ->SetColorTint(1.f, 1.f, 1.f, m_LifeTime);
+}
+
+void CUIDamageText::SetDamage(int Damage)
+{
+    int hundred = Damage / 100;
+    Damage      = Damage % 100;
+    int ten     = Damage / 10;
+    int num     = Damage % 10;
+
+    bool bhundred = false, bten = false;
+
+    // 100의 자리 — 0이면 숨김
+    if (hundred != 0) { SetNumberImage(m_Image100, hundred); bhundred = true; }
+    else              m_Image100->Enable(false);
+
+    // 10의 자리 — 100자리가 표시되거나 자기가 0이 아니면 표시
+    if (bhundred || ten != 0) { SetNumberImage(m_Image10, ten); bten = true; }
+    else                       m_Image10->Enable(false);
+
+    // 1의 자리 — 10/100자리가 표시되거나 자기가 0이 아니면 표시
+    if (bten || num != 0) SetNumberImage(m_Image1, num);
+}
+
+void CUIDamageText::SetNumberImage(CImage* Image, int Number)
+{
+    // Blue0.png ~ Blue9.png 텍스처를 숫자에 매핑
+    switch (Number)
+    {
+    case 0: Image->SetTexture("Blue0", TEXT("UI/In Game/Blue0.png")); break;
+    case 1: Image->SetTexture("Blue1", TEXT("UI/In Game/Blue1.png")); break;
+    // ... case 9
+    }
+}
+```
+
+- **자리수 분리**: `/100`, `%100/10`, `%10`로 백/십/일의 자리 추출
+- **앞 0 생략 로직**: 상위 자리가 표시 안 됐고 자기가 0이면 숨김
+- **위로 떠오름**: `Pos.y += DeltaTime * 40.f`
+- **페이드아웃**: 알파 = 남은 LifeTime (2초)
+- **숫자 텍스처**: `Blue0.png ~ Blue9.png` 매핑
 
 ---
 
@@ -690,6 +958,52 @@ public:
 - `GetPersent()` 값을 `LoadingUI`에 전달해 진행률 표시
 - 로드 완료 후 `NextScene()` 호출
 
+### Thread-safe 진행률 접근 (CriticalSection + RAII)
+
+```cpp
+CLoadingThread::CLoadingThread()
+    : m_LoadingMaxCount(12), m_LoadingCount(0), nextScene(nullptr)
+{
+    CThreadManager::GetInst()->CreateCriticalSection("LoadingCritcal");
+}
+
+void CLoadingThread::Run()
+{
+    CStageManager::GetInst()->SetLoadThreading(this);
+    CScene* Scene = CSceneManager::GetInst()->CreateScene();
+    Scene->SetSceneMode<CLobbyScene>();
+    nextScene = Scene;
+}
+
+// LoadingCount 접근은 모두 CriticalSection으로 보호
+void CLoadingThread::SetLoadingCount(int num)
+{
+    CRITICAL_SECTION* Cri = CThreadManager::GetInst()->FindCriticalSection("LoadingCritcal");
+    CSync sync = CSync(Cri);     // RAII — 스코프 끝나면 자동 해제
+
+    m_LoadingCount = num;
+}
+
+float CLoadingThread::GetPersent() const
+{
+    CRITICAL_SECTION* Cri = CThreadManager::GetInst()->FindCriticalSection("LoadingCritcal");
+    CSync sync = CSync(Cri);
+
+    return (float)m_LoadingCount / (float)m_LoadingMaxCount;
+}
+
+void CLoadingThread::NextScene()
+{
+    CStageManager::GetInst()->SetLoadThreading(nullptr);
+    CSceneManager::GetInst()->SetNextScene(nextScene);
+    DestroyThread();
+}
+```
+
+- `CSync` 클래스가 `CRITICAL_SECTION`을 RAII 방식(`std::lock_guard` 같은 패턴)으로 감싸 자동 진입/해제
+- 메인 스레드(UI 갱신) ↔ 로딩 스레드(LoadingCount 증가) 간 안전한 데이터 공유
+- 로드 종료 시 `SceneManager::SetNextScene()` + `DestroyThread()`로 정리
+
 ---
 
 # DataTable
@@ -739,4 +1053,16 @@ public:
 | `LobbyShip` / `LobbyValkyrieSelectZone` | 로비 오브젝트 |
 | `LoadingStartObject` | 로딩 화면 진입 오브젝트 |
 
+---
 
+# 기술 스택
+
+- C++, DirectX 11, HLSL
+- FMOD, ImGui, ImGuizmo, ImGuiFileDialog
+- 자체 FSM (멤버 함수 포인터 콜백) — 캐릭터·보스·잡몹별 분리
+- AnimationEndFunc 콜백, Root Motion (RootMotionX/Y/Z)
+- WorldToScreen UI 연동
+- TrailComponent 기반 검 궤적 (SakuraPlayer)
+- 붕괴3 Shadow Threshold 카툰 렌더링 (Deferred Rendering 통합)
+- 멀티스레드 리소스 로딩 (CThread)
+- ImGui 인스펙터 5종 자체 추가
